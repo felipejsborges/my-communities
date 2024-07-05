@@ -1,0 +1,54 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: felipejsborges
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: my-communities-users-api
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: communities-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+
+functions:
+  list-communities:
+    handler: src/handlers/listCommunities.handler
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+  create-community:
+    handler: src/handlers/createCommunity.handler
+    events:
+      - http:
+          path: /
+          method: post
+          # cors: true
+  # get-community:
+  #   handler: src/handlers/getCommunity.handler
+  #   events:
+  #     - http:
+  #         path: /{id}
+  #         method: get
+  #         # cors: true
+  # update-community:
+  #   handler: src/handlers/updateCommunity.handler
+  #   events:
+  #     - http:
+  #         path: /{id}
+  #         method: put
+  #         # cors: true
+  # delete-community:
+  #   handler: src/handlers/deleteCommunity.handler
+  #   events:
+  #     - http:
+  #         path: /{id}
+  #         method: delete
+  #         # cors: true
+  test:
+    handler: src/handlers/test.handler
+    events:
+      - http:
+          path: /test
+          method: get
+          # cors: true
