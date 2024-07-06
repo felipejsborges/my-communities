@@ -23,4 +23,12 @@ export default class CommunitiesRepository {
 	async findById(id) {
 		return await this.communityModel.findById(id)
 	}
+
+	async updateById(id, data) {
+		return await this.communityModel.findByIdAndUpdate(id, data)
+	}
+
+	async deleteById(id) {
+		return await this.communityModel.findByIdAndDelete(id)
+	}
 }

@@ -15,7 +15,7 @@ export const handler = async (event, context) => {
 			body: JSON.stringify(communities),
 		};
 	} catch (error) {
-		console.error('Error:', error);
+		console.error("Error listing	community:", error);
 		return {
 			statusCode: 500,
 			body: JSON.stringify({ message: 'Internal Server Error!!' }),

@@ -3,21 +3,17 @@ import CommunitiesRepository from "../repositories/communities";
 
 export const handler = async (event, context, callback) => {
 	try {
+		const { id } = event.pathParameters;
 		const data = JSON.parse(event.body)
 
 		const communitiesRepository = new CommunitiesRepository();
-		const community = await communitiesRepository.create({
-			...data,
-			ownerId: "1",
-			createdAt: new Date().toISOString(),
-		});
+		await communitiesRepository.updateById(id, data);
 
 		return {
-			statusCode: 200,
-			body: JSON.stringify(community),
+			statusCode: 204,
 		};
 	} catch (error) {
-		console.error("Error creating	community:", error);
+		console.error("Error getting	community:", error);
 		return {
 			statusCode: 500,
 			body: JSON.stringify({ message: 'Internal Server Error!!' }),

@@ -24,31 +24,25 @@ functions:
           path: /
           method: post
           # cors: true
-  # get-community:
-  #   handler: src/handlers/getCommunity.handler
-  #   events:
-  #     - http:
-  #         path: /{id}
-  #         method: get
-  #         # cors: true
-  # update-community:
-  #   handler: src/handlers/updateCommunity.handler
-  #   events:
-  #     - http:
-  #         path: /{id}
-  #         method: put
-  #         # cors: true
-  # delete-community:
-  #   handler: src/handlers/deleteCommunity.handler
-  #   events:
-  #     - http:
-  #         path: /{id}
-  #         method: delete
-  #         # cors: true
-  test:
-    handler: src/handlers/test.handler
+  get-community:
+    handler: src/handlers/getCommunity.handler
     events:
       - http:
-          path: /test
+          path: /{id}
           method: get
           # cors: true
+  update-community:
+    handler: src/handlers/updateCommunity.handler
+    events:
+      - http:
+          path: /{id}
+          method: put
+          # cors: true
+  delete-community:
+    handler: src/handlers/deleteCommunity.handler
+    events:
+      - http:
+          path: /{id}
+          method: delete
+          # cors: true
+
