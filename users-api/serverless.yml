@@ -30,10 +30,41 @@ provider:
     USERS_TABLE: ${param:tableName}
 
 functions:
-  api:
-    handler: handler.handler
+  list-users:
+    handler: src/handlers/listUsers.handler
     events:
-      - httpApi: "*"
+      - http:
+          path: /
+          method: get
+          cors: true
+  create-user:
+    handler: src/handlers/createUser.handler
+    events:
+      - http:
+          path: /
+          method: post
+          # cors: true
+  get-user:
+    handler: src/handlers/getUser.handler
+    events:
+      - http:
+          path: /{id}
+          method: get
+          # cors: true
+  update-user:
+    handler: src/handlers/updateUser.handler
+    events:
+      - http:
+          path: /{id}
+          method: put
+          # cors: true
+  delete-user:
+    handler: src/handlers/deleteUser.handler
+    events:
+      - http:
+          path: /{id}
+          method: delete
+          # cors: true
 
 resources:
   Resources:
